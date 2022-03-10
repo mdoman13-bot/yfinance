@@ -2,6 +2,7 @@ from posixpath import join
 from numpy import average
 import yfinance as yf
 import pandas as pd
+import pandas_datareader as pdr
 import yfinance as yf
 import datetime
 import time
@@ -13,29 +14,69 @@ import io
 
 #Query list of ticker symbols from user
 #Initialize list to use with API to pull historical closing prices
-def ticker_input():
 
-    ticker_list = []
+ticker_list = []
+ticker_1 = str(input("Enter a ticker symbol, or type 'done' if done: "))
+ticker_1 = ticker_1.upper()
+break_var = ['DONE','STOP']
+while ticker_1 not in break_var:
+    ticker_list.append(ticker_1)
     ticker_1 = str(input("Enter a ticker symbol, or type 'done' if done: "))
     ticker_1 = ticker_1.upper()
 
-    while ticker_1 != 'DONE' and ticker_1 != 'STOP':
-        ticker_list.append(ticker_1)
-        ticker_1 = str(input("Enter a ticker symbol, or type 'done' if done: "))
-        ticker_1 = ticker_1.upper()
+print(ticker_list)
+sorted_ticker = ticker_list
+ticker_string = ""
+newchars = " "
 
-    sorted_ticker = ticker_list.sort()
-    ticker_string = ""
-    newchars = " "
+for i in sorted_ticker:
+    ticker_string = str(ticker_string + i + newchars)
+ticker_string = ticker_string.strip()
 
-    for i in sorted_ticker:
-        ticker_string = (ticker_string + i + newchars)
+data = yf.download(ticker_string,start= "2009-01-01", end = "2019-01-01", interval = "1d", group_by="ticker",threads = True)
 
-    print(ticker_string)
+print(data)
 
-if __name__ == "__main__":
-    ticker_input()
 
+
+
+
+
+
+
+
+
+
+
+
+
+# if __name__ == "__main__":
+#     ticker_input()
+
+
+
+# def ticker_input():
+
+#     ticker_list = []
+#     ticker_1 = str(input("Enter a ticker symbol, or type 'done' if done: "))
+#     ticker_1 = ticker_1.upper()
+
+#     while ticker_1 != 'DONE' and ticker_1 != 'STOP':
+#         ticker_list.append(ticker_1)
+#         ticker_1 = str(input("Enter a ticker symbol, or type 'done' if done: "))
+#         ticker_1 = ticker_1.upper()
+
+#     sorted_ticker = ticker_list.sort()
+#     ticker_string = ""
+#     newchars = " "
+
+#     for i in sorted_ticker:
+#         ticker_string = (ticker_string + i + newchars)
+
+#     print(ticker_string)
+
+# if __name__ == "__main__":
+#     ticker_input()
 
 
 
