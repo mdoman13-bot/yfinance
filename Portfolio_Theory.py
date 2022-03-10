@@ -1,0 +1,45 @@
+from posixpath import join
+from numpy import average
+import yfinance as yf
+import pandas as pd
+import yfinance as yf
+import datetime
+import time
+import requests
+import io
+#https://aroussi.com/post/python-yahoo-finance
+#Documentation for yfinance usability
+
+
+#Query list of ticker symbols from user
+#Initialize list to use with API to pull historical closing prices
+def ticker_input():
+
+    ticker_list = []
+    ticker_1 = str(input("Enter a ticker symbol, or type 'done' if done: "))
+    ticker_1 = ticker_1.upper()
+
+    while ticker_1 != 'DONE' and ticker_1 != 'STOP':
+        ticker_list.append(ticker_1)
+        ticker_1 = str(input("Enter a ticker symbol, or type 'done' if done: "))
+        ticker_1 = ticker_1.upper()
+
+    sorted_ticker = ticker_list.sort()
+    ticker_string = ""
+    newchars = " "
+
+    for i in sorted_ticker:
+        ticker_string = (ticker_string + i + newchars)
+
+    print(ticker_string)
+
+if __name__ == "__main__":
+    ticker_input()
+
+
+
+
+
+# data = yf.download(ticker_string,start= "2009-01-01", end = "2019-01-01", group_by="ticker")
+# new_average = average(data['TSLA']['Close'])
+# print(data)
