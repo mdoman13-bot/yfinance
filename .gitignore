@@ -9,3 +9,4 @@ build/
 *.html
 *.css
 *.png
+DS_Store/
