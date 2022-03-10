@@ -1,4 +1,4 @@
-from posixpath import join
+#Modules
 from numpy import average
 import yfinance as yf
 import pandas as pd
@@ -33,9 +33,8 @@ for i in sorted_ticker:
     ticker_string = str(ticker_string + i + newchars)
 ticker_string = ticker_string.strip()
 
-data = yf.download(ticker_string,start= "2009-01-01", end = "2019-01-01", interval = "1d", group_by="ticker",threads = True)
-
-print(data)
+data = yf.download(ticker_string,start= "2016-01-01", end = "2021-01-01", interval = "1d", group_by="ticker",threads = True)
+print(data[])
 
 
 
