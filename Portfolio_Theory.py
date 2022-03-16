@@ -34,7 +34,8 @@ for i in sorted_ticker:
 ticker_string = ticker_string.strip()
 
 data = yf.download(ticker_string,start= "2016-01-01", end = "2021-01-01", interval = "1d", group_by="ticker",threads = True)
-print(data)
+for t in range(1,len(sorted_ticker)):
+    print(data[t]['Close'])
 
 
 
