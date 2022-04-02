@@ -1,9 +1,8 @@
 #Modules
-from numpy import average
+import numpy as np
 import yfinance as yf
 import pandas as pd
 import pandas_datareader as pdr
-import yfinance as yf
 import datetime
 import time
 import requests
@@ -35,7 +34,7 @@ ticker_string = ticker_string.strip()
 
 data = yf.download(ticker_string,start= "2016-01-01", end = "2021-01-01", interval = "1d", group_by="ticker",threads = True)
 for t in range(1,len(sorted_ticker)):
-    print(data[t]['Close'])
+    print(data[t])
 
 
 
